@@ -4,8 +4,9 @@ on:
     paths:
       - "**.swift"
       - .github/workflows/ci.yml
-  schedule:
-    - cron: "3 3 * * 0" # 3:03 AM, every Sunday
+  # schedule:
+  #   - cron: "3 3 * * 0" # 3:03 AM, every Sunday
+  workflow_dispatch:
 jobs:
   macOS:
     runs-on: ${{ matrix.cfg.macos }}
