@@ -260,6 +260,8 @@ let swiftVersion: String = {
     }
 #if swift(>=6.0)
     return "6.0"
+#elseif swift(>=5.10)
+    return "5.10"
 #elseif swift(>=5.9)
     return "5.9"
 #elseif swift(>=5.8)

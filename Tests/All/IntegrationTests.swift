@@ -271,8 +271,7 @@ class RunIntegrationTests: XCTestCase {
         for x in 1...3 {
             XCTAssertEqual(try go(input: "print(\(x))"), "\(x)\n")
 
-        #if swift(>=5)
-        #else
+        #if swift(<5)
             // sleep or race condition bug in SwiftPM 4.2 causes these tests to fail
             sleep(1)
         #endif
@@ -511,29 +510,31 @@ class TestingTheTests: XCTestCase {
         let expected = swiftVersion
         XCTAssertEqual(expected, exec: """
             #if swift(>=6.0)
-                print(6.0)
+                print("6.0")
+            #elseif swift(>=5.10)
+                print("5.10")
             #elseif swift(>=5.9)
-                print(5.9)
+                print("5.9")
             #elseif swift(>=5.8)
-                print(5.8)
+                print("5.8")
             #elseif swift(>=5.7)
-                print(5.7)
+                print("5.7")
             #elseif swift(>=5.6)
-                print(5.6)
+                print("5.6")
             #elseif swift(>=5.5)
-                print(5.5)
+                print("5.5")
             #elseif swift(>=5.4)
-                print(5.4)
+                print("5.4")
             #elseif swift(>=5.3)
-                print(5.3)
+                print("5.3")
             #elseif swift(>=5.2)
-                print(5.2)
+                print("5.2")
             #elseif swift(>=5.1)
-                print(5.1)
+                print("5.1")
             #elseif swift(>=5.0)
-                print(5.0)
+                print("5.0")
             #elseif swift(>=4.2)
-                print(4.2)
+                print("4.2")
             #else
                 fatalError()
             #endif
