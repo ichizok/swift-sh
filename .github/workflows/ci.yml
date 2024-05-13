@@ -29,12 +29,13 @@ jobs:
             macos: macos-14
     steps:
       - uses: actions/checkout@v4
-      - uses: mxcl/xcodebuild@v3
+      - uses: mxcl/xcodebuild@v3.0.0
         with:
           swift: ${{ matrix.cfg.swift }}
   linux:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         swift:
           - "5.2-focal"
