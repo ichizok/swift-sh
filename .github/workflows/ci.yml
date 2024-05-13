@@ -2,49 +2,51 @@ name: CI
 on:
   pull_request:
     paths:
-      - '**.swift'
+      - "**.swift"
       - .github/workflows/ci.yml
   schedule:
-    - cron: '3 3 * * 0'  # 3:03 AM, every Sunday
+    - cron: "3 3 * * 0" # 3:03 AM, every Sunday
 jobs:
   macOS:
     runs-on: ${{ matrix.cfg.macos }}
     strategy:
       matrix:
         cfg:
-        - swift: 5.1
-          macos: macos-10.15
-        - swift: 5.2
-          macos: macos-10.15
-        - swift: 5.3
-          macos: macos-10.15
-        - swift: 5.4
-          macos: macos-11
-        - swift: 5.5
-          macos: macos-11
-        - swift: 5.6
-          macos: macos-12
-        - swift: 5.7
-          macos: macos-12
+          - swift: "5.4"
+            macos: macos-11
+          - swift: "5.5"
+            macos: macos-11
+          - swift: "5.6"
+            macos: macos-12
+          - swift: "5.7"
+            macos: macos-12
+          - swift: "5.8"
+            macos: macos-13
+          - swift: "5.9"
+            macos: macos-13
+          - swift: "5.10"
+            macos: macos-14
     steps:
-    - uses: actions/checkout@v2
-    - uses: mxcl/xcodebuild@v1
-      with:
-        swift: ${{ matrix.cfg.swift }}
+      - uses: actions/checkout@v4
+      - uses: mxcl/xcodebuild@v3
+        with:
+          swift: ${{ matrix.cfg.swift }}
   linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         swift:
-          - 5.1
-          - 5.2
-          - 5.3
-          - 5.4
-          - 5.5
-          - 5.6
-          - 5.7
+          - "5.2-focal"
+          - "5.3-focal"
+          - "5.4-focal"
+          - "5.5-focal"
+          - "5.6-focal"
+          - "5.7"
+          - "5.8"
+          - "5.9"
+          - "5.10"
     container:
       image: swift:${{ matrix.swift }}
     steps:
-    - uses: actions/checkout@v2
-    - run: swift test -Xswiftc -suppress-warnings --enable-test-discovery
+      - uses: actions/checkout@v4
+      - run: swift test -Xswiftc -suppress-warnings --enable-test-discovery

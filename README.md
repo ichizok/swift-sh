@@ -1,4 +1,4 @@
-# `swift sh` ![badge-platforms] ![badge-languages] [![Build Status](https://travis-ci.com/mxcl/swift-sh.svg)](https://travis-ci.com/mxcl/swift-sh)
+# `swift sh` ![badge-platforms] ![badge-languages] [![Build Status](https://github.com/mxcl/swift-sh/actions/workflows/ci.yml/badge.svg)](https://github.com/mxcl/swift-sh/actions/workflows/ci.yml)
 
 Writing Swift scripts is *easy*:
 
