@@ -35,6 +35,7 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         swift:
           - "5.2-focal"
